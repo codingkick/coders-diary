@@ -3,7 +3,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { getDatabase, ref, query, orderByChild, onValue, orderByValue} from "firebase/database";
 import { useEffect,useState } from 'react';
-import { PerformanceChartLoading } from './PerformanceChartLoading';
+import { LeaderBoardLoading } from './LeaderBoardLoading';
 
 export const LeaderBoard = () => {
     const [leaderboardData, setleaderboardData] = useState(null);
@@ -79,7 +79,7 @@ export const LeaderBoard = () => {
             />
         </div>
         </>:
-        <PerformanceChartLoading/>
+        <LeaderBoardLoading></LeaderBoardLoading>
         }
         
         </>

@@ -37,43 +37,43 @@ export const Login = () => {
     return (
         state.loading?<Loader/>:
         <div className="login">
-                <div className={`login_colored-container ${login ? 'logincolored-container--left' : 'login_colored-container--right'}`}></div>
-                <div className={`login_welcome-back ${login ? 'loginwelcome-back--active' : 'login_welcome-back--inactive'}`}>
-                    <div className="login_welcome-back_logo-container">
-                        <img className="login_welcome-back_logo-container--image" src={logo} alt="Budwriter" />
+                <div className={`login__colored-container ${login ? 'login__colored-container--left' : 'login__colored-container--right'}`}></div>
+                <div className={`login__welcome-back ${login ? 'login__welcome-back--active' : 'login__welcome-back--inactive'}`}>
+                    <div className="login__welcome-back__logo-container">
+                        <img className="login__welcome-back__logo-container--image" src={logo} alt="Budwriter" />
                         Budwriter
                     </div>
-                    <div className="login_welcome-back_main-container">
-                        <div className="login_welcome-backmain-container_text-container">
-                            <span className="login_welcome-backmain-container_text-container--title">
+                    <div className="login__welcome-back__main-container">
+                        <div className="login__welcome-back__main-container__text-container">
+                            <span className="login__welcome-back__main-container__text-container--title">
                                 Welcome Back!
                             </span>
-                            <span className="login_welcome-backmain-container_text-container--secondary">
+                            <span className="login__welcome-back__main-container__text-container--secondary">
                                 To keep sharing your work with us, please log in.
                             </span>
                         </div>
                         <div onClick={() => {
                             setlogin(!login)
-                        }} className="login_welcome-backmain-container_button-container">
+                        }} className="login__welcome-back__main-container__button-container">
                             Sign In
                         </div>
                     </div>
                 </div>
-                <div className={`login_create-container ${login ? 'logincreate-container--active' : 'login_create-container--inactive'}`}>
+                <div className={`login__create-container ${login ? 'login__create-container--active' : 'login__create-container--inactive'}`}>
                     Create Account
-                    <div className="login_create-container_social-container">
+                    <div className="login__create-container__social-container">
                        
-                        <img className="login_create-container_social-container--google-icon" src={google} alt="" onClick={handleGoogleLogin}/>
+                        <img className="login__create-container__social-container--google-icon" src={google} alt="" onClick={handleGoogleLogin}/>
                         
                     </div>
                     <span className="login__create-container--info-text">or use email for your registration</span>
-                    <div className="login_create-container_form-container">
-                        <form className="login_create-containerform-container_form" onSubmit={(e) => {
+                    <div className="login__create-container__form-container">
+                        <form className="login__create-container__form-container__form" onSubmit={(e) => {
                             e.preventDefault();
                             signUp();
                         }}>
                             <input
-                                className="login_create-containerform-container_form--name"
+                                className="login__create-container__form-container__form--name"
                                 type="text"
                                 placeholder="Name"
                                 value={signUpForm.name}
@@ -86,8 +86,8 @@ export const Login = () => {
                                 })}
                                 required />
                             <input
-                                className="login_create-containerform-container_form--email"
-                                // className="login_login-containermain-containerform-container_form--email"
+                                className="login__create-container__form-container__form--email"
+                                // className="login__login-container__main-container__form-container__form--email"
                                 type="email"
                                 placeholder="Email"
                                 value={signUpForm.email}
@@ -100,7 +100,7 @@ export const Login = () => {
                                 })}
                                 required />
                             <input
-                                className="login_create-containerform-container_form--password"
+                                className="login__create-container__form-container__form--password"
                                 type="password"
                                 placeholder="Password"
                                 value={signUpForm.password}
@@ -113,29 +113,29 @@ export const Login = () => {
                                 )}
                                 required />
                             <button
-                                className="login_create-containerform-container_form--submit">
+                                className="login__create-container__form-container__form--submit">
                                 Sign Up
                             </button>
                         </form>
                     </div>
                 </div>
-                <div className={`login_login-container ${!login ? 'loginlogin-container--active' : 'login_login-container--inactive'}`}>
-                    <div className="login_login-container_logo-container">
-                        <img className="login_login-container_logo-container--image" src={logo} alt="Budwriter" />
+                <div className={`login__login-container ${!login ? 'login__login-container--active' : 'login__login-container--inactive'}`}>
+                    <div className="login__login-container__logo-container">
+                        <img className="login__login-container__logo-container--image" src={logo} alt="Budwriter" />
                         Budwriter
                     </div>
-                    <div className="login_login-container_main-container">
-                        <div className="login_login-containermain-container_social-container">
-                            <img className="login_login-containermain-container_social-container--google-icon" src={google} alt="" onClick={handleGoogleLogin}/>
+                    <div className="login__login-container__main-container">
+                        <div className="login__login-container__main-container__social-container">
+                            <img className="login__login-container__main-container__social-container--google-icon" src={google} alt="" onClick={handleGoogleLogin}/>
                         </div>
-                        <span className="login_login-container_main-container--info-text">or use email for your login</span>
-                        <div className="login_login-containermain-container_form-container">
-                            <form className="login_login-containermain-containerform-container_form" onSubmit={(e) => {
+                        <span className="login__login-container__main-container--info-text">or use email for your login</span>
+                        <div className="login__login-container__main-container__form-container">
+                            <form className="login__login-container__main-container__form-container__form" onSubmit={(e) => {
                                 e.preventDefault();
                                 signIn();
                             }}>
                                 <input
-                                    className="login_login-containermain-containerform-container_form--email"
+                                    className="login__login-container__main-container__form-container__form--email"
                                     type="email"
                                     placeholder="Email"
                                     value={signInForm.email}
@@ -147,7 +147,7 @@ export const Login = () => {
                                     )}}
                                     required />
                                 <input
-                                    className="login_login-containermain-containerform-container_form--password"
+                                    className="login__login-container__main-container__form-container__form--password"
                                     type="password"
                                     placeholder="Password"
                                     value={signInForm.password}
@@ -159,25 +159,25 @@ export const Login = () => {
                                     )}
                                     required />
                                 <button
-                                    className="login_login-containermain-containerform-container_form--submit">
+                                    className="login__login-container__main-container__form-container__form--submit">
                                     Sign In
                             </button>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div className={`login_hello-container ${!login ? 'loginhello-container--active' : 'login_hello-container--inactive'}`}>
-                    <div className="login_welcome-backmain-container_text-container">
-                        <span className="login_welcome-backmain-container_text-container--title">
+                <div className={`login__hello-container ${!login ? 'login__hello-container--active' : 'login__hello-container--inactive'}`}>
+                    <div className="login__welcome-back__main-container__text-container">
+                        <span className="login__welcome-back__main-container__text-container--title">
                             Hello, stranger!
                             </span>
-                        <span className="login_welcome-backmain-container_text-container--secondary">
+                        <span className="login__welcome-back__main-container__text-container--secondary">
                             Enter your personal details and start your own portfolio!
                         </span>
                     </div>
                     <div onClick={() => {
                         setlogin(!login);
-                    }} className="login_welcome-backmain-container_button-container">
+                    }} className="login__welcome-back__main-container__button-container">
                         Sign Up
                     </div>
                 </div>
