@@ -13,7 +13,7 @@ export const DashBoard = () => {
   const dispatch = useDispatch();
   
   const handleLogout=()=>{
-    console.log("in handle logout");
+    // console.log("in handle logout");
     dispatch(logoutIntiate());
   }
   const styling={

@@ -2,7 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import React from 'react'
 import {useState,useRef,useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import { getDatabase,ref, onValue } from "firebase/database";
 import { ButtonGroup, Container } from 'react-bootstrap';
@@ -10,10 +10,20 @@ import { Row,Col,Card,Button} from 'react-bootstrap';
 import './mainpage.css';
 import { SinglePage } from './SinglePage';
 import { Link } from 'react-router-dom';
+import { logoutIntiate } from '../../redux/actions/loginRegisterActions';
 export const MainPage = () => {
 
   const state = useSelector(state => state.userReducer);
   const [question, setquestion] = useState([]);
+  const dispatch = useDispatch();
+  
+  const handleLogout=()=>{
+    // console.log("in handle logout");
+    dispatch(logoutIntiate());
+  }
+  const styling={
+    'background-color':'#e3f2fd'
+  }
   const cardHelper=question.map((question)=>{
     return(
           <MyCard quename={question.quename}
@@ -26,15 +36,15 @@ export const MainPage = () => {
   })
   useEffect(() => {
     const db = getDatabase();
-    console.log(state.selectedDate);
-    console.log("path : ",'submission/',state.user.uid,'/',btoa(state.selectedDate.month+'/'+state.selectedDate.day+'/'+state.selectedDate.year));
+    // console.log(state.selectedDate);
+    // console.log("path : ",'submission/',state.user.uid,'/',btoa(state.selectedDate.month+'/'+state.selectedDate.day+'/'+state.selectedDate.year));
     const todoRef = ref(db,'submission/'+state.user.uid+'/'+btoa(state.selectedDate.month+'/'+state.selectedDate.day+'/'+state.selectedDate.year));
     onValue(todoRef, (snapshot) => {
       const todos = snapshot.val();
       const todoList = [];
-      console.log(todos);
+      // console.log(todos);
       for (let id in todos) {
-        console.log(todos[id]);
+        // console.log(todos[id]);
         todoList.push({ id, ...todos[id] });
       }
       setquestion(todoList);
@@ -42,6 +52,11 @@ export const MainPage = () => {
 
   }, [])
     return (
+      <div>
+      <nav className="navbar navbar-light justify-content-between" style={styling}>
+        <a className="navbar-brand">Coder's Diary</a>
+          <button type="button" className="btn btn-outline-danger" onClick={()=>handleLogout()}>Logout</button>
+      </nav>
       <Container>
         <Row className = "tmp">
           <Col className = "tmp1">
@@ -51,7 +66,7 @@ export const MainPage = () => {
           </Col>
         </Row>
       </Container>
-   
+   </div>
       
     )
 }
@@ -104,7 +119,7 @@ const MyCard=({queid,quename,queurl,comment,platform})=>{
             {comment}
           </Card.Text>
             <ButtonGroup  style={{position:"absolute",bottom:2,right:1}}>
-              <Button style={{borderRadius:"4px"}}variant="info" rounded><i class="fas fa-link"></i>Open Question</Button>
+              <Button style={{borderRadius:"4px"}}variant="info" rounded onClick={()=>{window.open(queurl);}}><i class="fas fa-link"></i>Open Question</Button>
               <Link to={`/${queid}`}>
                 <Button style={{marginLeft:"4px"}} variant="danger" rounded><i class="fas fa-edit"></i>Update Notes</Button>
               </Link> 

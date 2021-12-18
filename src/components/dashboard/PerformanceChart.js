@@ -17,16 +17,16 @@ export const PerformanceChart = () => {
     var userSubmissionData = [];
 
     // const tempdata = [];
-function comp1(a,b){
-    if(a.label>b.label)
-    return -1;
-    else
-    return 1;
-}
+    function comp1(a,b){
+        if(a.label>b.label)
+        return -1;
+        else
+        return 1;
+    }
     useEffect(() => {
         if(data.length === 0)
         {
-            console.log("1st useeffect");
+            // console.log("1st useeffect");
             const db = getDatabase();
         const totalUsersRef=ref(db,'users');
         var date=new Date();
@@ -43,7 +43,7 @@ function comp1(a,b){
         }, {
             onlyOnce: true
         })
-        console.log(totalUsers);
+        // console.log(totalUsers);
         // find all the submission count done by user in previous 30 days.
         
 
@@ -103,7 +103,7 @@ function comp1(a,b){
         
         if(data.length === 0)
         {
-            console.log("2nd useeffect");
+            // console.log("2nd useeffect");
             if(averageSubmission.length != 30 || userSubmissionData.length != 30)
         {
             setTimeout(()=>{

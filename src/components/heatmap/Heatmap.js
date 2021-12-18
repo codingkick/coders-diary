@@ -10,7 +10,7 @@ export const Heatmap = () => {
     const [datelist, setdatelist] = useState([]);
     const tempdatelist = [];
     useEffect(() => {
-        console.log("here");
+        // console.log("here");
         const db = getDatabase();
         const d=new Date();
         for(var i=0;i<365;i++)
@@ -78,7 +78,7 @@ export const Heatmap = () => {
 
     return (
         <>
-        {console.log(datelist.length)}
+        
         {datelist.length==365 ?
             <CalendarHeatmap
             startDate={startdate}
