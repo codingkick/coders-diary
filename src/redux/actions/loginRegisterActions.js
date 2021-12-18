@@ -3,10 +3,13 @@ import { GOOGLE_LOGIN_FAILED, GOOGLE_LOGIN_START, GOOGLE_LOGIN_SUCCESS, LOGIN_FA
 import { signOut,getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,updateProfile} from "firebase/auth";
 //for registration
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
  import { firebaseConfig } from "../../firebase"; 
   // Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const registerStart=()=>{
