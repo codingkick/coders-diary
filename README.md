@@ -5,7 +5,7 @@ Coder Diary is a software for the coders to track down there progress on Leetcod
 ## Requirements
 
 Use the coders diary extension for seeing the progress at coders diary website.
-website link : www.coder-diary-herokuapp.com
+website link : www.coder-diary.herokuapp.com
 
 ## Usage
 Use the extension which will automatically puts all the solved question by you in our database and the website will help you track the questions solved by you based on date.
