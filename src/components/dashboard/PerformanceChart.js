@@ -64,10 +64,11 @@ export const PerformanceChart = () => {
             const ref2 = ref(db,path);
             onValue(ref2,(snapshot)=>{
                 const data2 = snapshot.val();
+                // month1+'/'+date1+'/'+year1.substr(2,3)
                 if(data2 === null)
-                averageSubmission.push({label : month1+'/'+date1+'/'+year1.substr(2,3),y:1});
+                averageSubmission.push({label : (year1+'/'+month1+'/'+date1).substr(2,8),y:1});
                 else
-                averageSubmission.push({label : month1+'/'+date1+'/'+year1.substr(2,3),y:Math.ceil(data2.totalsubmission/totalUsers)});
+                averageSubmission.push({label : (year1+'/'+month1+'/'+date1).substr(2,8),y:Math.ceil(data2.totalsubmission/totalUsers)});
             });
             d2.setDate(d2.getDate()-1);
         }
@@ -76,7 +77,7 @@ export const PerformanceChart = () => {
         {
             let month = d.getMonth()+1;
             if(month<10)
-            month = 0 + month;
+            month = '0' + month;
             let date = d.getDate();
             if(date<10)
             date = '0'+date;
@@ -86,10 +87,11 @@ export const PerformanceChart = () => {
             const ref1 = ref(db,path);
             onValue(ref1,(snapshot)=>{
                 const data1 = snapshot.val();
+                // month+'/'+date+'/'+year.substr(2,3)
                 if(data1 === null)
-                userSubmissionData.push({label:month+'/'+date+'/'+year.substr(2,3),y:0});
+                userSubmissionData.push({label:(year+'/'+month+'/'+date).substr(2,8),y:0});
                 else
-                userSubmissionData.push({label:month+'/'+date+'/'+year.substr(2,3),y:Object.keys(data1).length});
+                userSubmissionData.push({label:(year+'/'+month+'/'+date).substr(2,8),y:Object.keys(data1).length});
             },{
                 onlyOnce : true
             });
@@ -115,6 +117,7 @@ export const PerformanceChart = () => {
                             setTimeout(()=>{
                                 userSubmissionData.sort(comp1);
                                 averageSubmission.sort(comp1);
+                                // console.log(userSubmissionData);
                                 setdata(userSubmissionData);
                                 setdata2(averageSubmission);
                             },5000);
@@ -122,7 +125,8 @@ export const PerformanceChart = () => {
                         else
                         {
                             userSubmissionData.sort(comp1);
-                                averageSubmission.sort(comp1);
+                            averageSubmission.sort(comp1);
+                            // console.log(userSubmissionData);
                             setdata(userSubmissionData);
                             setdata2(averageSubmission);
                         }
@@ -135,7 +139,8 @@ export const PerformanceChart = () => {
                         // console.log("----");
                         // console.log(averageSubmission);
                         userSubmissionData.sort(comp1);
-                                averageSubmission.sort(comp1);
+                        averageSubmission.sort(comp1);
+                        // console.log(userSubmissionData);
                         setdata(userSubmissionData);
                         setdata2(averageSubmission);
                     // },5000);
@@ -150,7 +155,6 @@ export const PerformanceChart = () => {
 
 
 
-    // console.log(data);
     if(data.length === 30 && data2.length == 30)
     {
         
@@ -167,7 +171,7 @@ export const PerformanceChart = () => {
                 suffix: ""
             },
             axisX: {
-                title: "Date(MM/DD/YY)",
+                title: "Date(YY/MM/DD)",
                 prefix: "",
                 interval: 2
             },

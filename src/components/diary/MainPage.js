@@ -38,7 +38,13 @@ export const MainPage = () => {
     const db = getDatabase();
     // console.log(state.selectedDate);
     // console.log("path : ",'submission/',state.user.uid,'/',btoa(state.selectedDate.month+'/'+state.selectedDate.day+'/'+state.selectedDate.year));
-    const todoRef = ref(db,'submission/'+state.user.uid+'/'+btoa(state.selectedDate.month+'/'+state.selectedDate.day+'/'+state.selectedDate.year));
+    let month = state.selectedDate.month;
+    let date = state.selectedDate.day;
+    if(month<10)
+    month = '0'+month;
+    if(date<10)
+    date = '0'+date;
+    const todoRef = ref(db,'submission/'+state.user.uid+'/'+btoa(month+'/'+date+'/'+state.selectedDate.year));
     onValue(todoRef, (snapshot) => {
       const todos = snapshot.val();
       const todoList = [];
