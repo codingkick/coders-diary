@@ -32,7 +32,8 @@ const App=()=>{
                 codechef:"",
                 codeforces:"",
                 gfg:"",
-                collegeName:""
+                collegeName:"",
+                total:0
               });
               const userData={
                 leetcode:"",
