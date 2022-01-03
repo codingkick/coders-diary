@@ -18,7 +18,7 @@ export const PerformanceChart = () => {
 
     // const tempdata = [];
     function comp1(a,b){
-        if(a.label>b.label)
+        if(a.label<b.label)
         return 1;
         else
         return -1;
