@@ -18,10 +18,10 @@ export const PerformanceChart = () => {
 
     // const tempdata = [];
     function comp1(a,b){
-        if(a.label>b.label)
-        return -1;
-        else
+        if(a.label<b.label)
         return 1;
+        else
+        return -1;
     }
     useEffect(() => {
         if(data.length === 0)
