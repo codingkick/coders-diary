@@ -80,7 +80,7 @@ const App=()=>{
           <Router>
              <Switch>
                 <PrivateRoute exact path="/" component={DashBoard}/>
-                <Route path="/login" component={Login} exact/>
+                <Route path="/login" component={Login exact/>
                 <PrivateRoute path="/mainPage" component={MainPage} exact/>
                 <PrivateRoute path='/:id' component={SinglePage} exact/>
               </Switch>
